@@ -5,7 +5,7 @@ const app = express()
 const port = 3000
 
 const logger = (req: Request, res: Response, next: NextFunction) => {
-  
+console.log(req.url,req.method,req.hostname)
 }
 
 // parser
@@ -14,6 +14,7 @@ app.use(express.text())
 // app.get('/', (req: Request, res: Response) => {
 //   res.send('Hello World12!')
 // })
+
 
 // req.params
 // Id finding
@@ -25,7 +26,7 @@ app.use(express.text())
 
 // req.query
 // email finding
-app.get('/', (req: Request, res: Response) => {
+app.get('/',logger, (req: Request, res: Response) => {
   console.log(req.query);
   
   res.send('Hello World12!')

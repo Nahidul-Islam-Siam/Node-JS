@@ -7,6 +7,7 @@ const express_1 = __importDefault(require("express"));
 const app = (0, express_1.default)();
 const port = 3000;
 const logger = (req, res, next) => {
+    console.log(req.url, req.method, req.hostname);
 };
 // parser
 app.use(express_1.default.json());
@@ -22,7 +23,7 @@ app.use(express_1.default.text());
 // })
 // req.query
 // email finding
-app.get('/', (req, res) => {
+app.get('/', logger, (req, res) => {
     console.log(req.query);
     res.send('Hello World12!');
 });
