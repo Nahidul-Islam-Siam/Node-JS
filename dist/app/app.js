@@ -9,4 +9,8 @@ const port = 3000;
 app.get('/', (req, res) => {
     res.send('Hello World12!');
 });
+app.post('/', (req, res) => {
+    console.log(req.body);
+    res.send('got data');
+});
 exports.default = app;
