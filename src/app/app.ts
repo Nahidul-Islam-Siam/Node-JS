@@ -4,8 +4,13 @@ import express, { NextFunction, Request, Response } from 'express'
 const app = express()
 const port = 3000
 
+
+
+
+// middleware
 const logger = (req: Request, res: Response, next: NextFunction) => {
 console.log(req.url,req.method,req.hostname)
+next()
 }
 
 // parser
@@ -15,6 +20,11 @@ app.use(express.text())
 //   res.send('Hello World12!')
 // })
 
+const userRouter = express.Router()
+userRouter.get('/api/v1/users', (req: Request, res: Response) => {
+  const user=req.body
+  console.log(user);
+}
 
 // req.params
 // Id finding
@@ -27,7 +37,7 @@ app.use(express.text())
 // req.query
 // email finding
 app.get('/',logger, (req: Request, res: Response) => {
-  console.log(req.query);
+
   
   res.send('Hello World12!')
 })
