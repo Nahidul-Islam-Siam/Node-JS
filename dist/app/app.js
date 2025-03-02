@@ -9,7 +9,19 @@ const port = 3000;
 // parser
 app.use(express_1.default.json());
 app.use(express_1.default.text());
+// app.get('/', (req: Request, res: Response) => {
+//   res.send('Hello World12!')
+// })
+// req.params
+// Id finding
+// app.get('/:userId/:subId', (req: Request, res: Response) => {
+//   console.log(req.params);
+//   res.send('Hello World12!')
+// })
+// req.query
+// email finding
 app.get('/', (req, res) => {
+    console.log(req.query);
     res.send('Hello World12!');
 });
 app.post('/', (req, res) => {
