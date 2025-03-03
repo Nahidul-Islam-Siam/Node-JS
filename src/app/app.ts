@@ -59,10 +59,40 @@ courseRouter.post('/create-course', (req: Request, res: Response) => {
 
 // req.query
 // email finding
-app.get('/', logger, (req: Request, res: Response) => {
+app.get("/", logger, async (req: Request, res: Response,next:NextFunction) => {
+  try {
+    res.send(something);
+  } catch (error) {
+    console.log(error);
+    next(error)
+    // res.status(400).json({
+    //   success: false,
+    //   message: "failed to get data from server",
+    // });
+  }
+});
 
 
-  res.send('Hello World12!')
+// global error handler
+app.use((error: any, req: Request, res: Response, next: NextFunction) => {
+if(error){
+  res.status(400).json({
+    success: false,
+    message: "Somthing Went wrongr",
+  });
+}
+
+
+})
+
+
+
+
+app.all('*', (req: Request, res: Response) => {
+  res.status(400).json({
+    success: false,
+    message: "Route is not found",
+  })
 })
 
 
